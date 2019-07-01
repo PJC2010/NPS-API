@@ -1,4 +1,7 @@
 'use strict'
+const apiKey = 'z4BFySAXLMiM6EMUCtCCz11nbpCHgqErutdZsaRW';
+
+
 
 function formatQueryParams(params){
     const queryItems = Object.keys(params).map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
@@ -22,7 +25,7 @@ function getStateParks(searchURL, searchState, maxResults, apiKey){
     })
     .then(responseJson => displayResults(responseJson, maxResults))
     .catch(err => {
-        $('#js-error').text(`Something went wrong: ${err.message}`)
+        $('#js-error-message').text(`Something went wrong: ${err.message}`)
     })
 
 }
@@ -46,11 +49,13 @@ function displayResults(responseJson){
 function watchForm(){
     $('form').submit(event => {
         event.preventDefault();
-        const searchURL = 'https://api.nps.gov/api/v1/parks'
+        
         const stateCode = $('#js-state-search').val()
         const maxResults = $('#js-max-results').val();
+        
+        const searchURL = 'https://cors-anywhere.herokuapp.com/https://api.nps.gov/api/v1/parks'
 
-        const apiKey = 'z4BFySAXLMiM6EMUCtCCz11nbpCHgqErutdZsaRW'
+        
         getStateParks(searchURL, stateCode, maxResults, apiKey)
 
     })
