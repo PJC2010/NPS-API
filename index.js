@@ -23,7 +23,7 @@ function getStateParks(searchURL, searchState, maxResults, apiKey){
         }
         throw new Error(response.statusText)
     })
-    .then(responseJson => displayResults(responseJson, maxResults))
+    .then(responseJson => displayResults(responseJson))
     .catch(err => {
         $('#js-error-message').text(`Something went wrong: ${err.message}`)
     })
@@ -33,10 +33,9 @@ function getStateParks(searchURL, searchState, maxResults, apiKey){
 function displayResults(responseJson){
     console.log(responseJson);
     $('#results-list').empty();
-    for(let i = 0; i < responseJson.data.length; i++){
+    for(let i = 0; i < responseJson.data.length; i++){ //for of loop -***
         $('#results-list').append(
             `<li><h3>${responseJson.data[i].fullName} - Location: ${responseJson.data[i].states}</h3>
-            <p>Address: ${responseJson.data[0]}</p>
             <p>Description: ${responseJson.data[i].description}</p></li>
             <p>URL: <a href="${responseJson.data[i].url}"</a> ${responseJson.data[i].url}</p>
             `)
