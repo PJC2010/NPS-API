@@ -44,6 +44,11 @@ function displayResults(responseJson){
     $('section').removeClass('hidden')
     
 }
+function resetForm(){
+    $(':reset').click(event => {
+        $('#results-list').empty();
+    })
+}
 
 function watchForm(){
     $('form').submit(event => {
@@ -60,3 +65,4 @@ function watchForm(){
     })
 }
 $(watchForm);
+$(resetForm);
