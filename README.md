@@ -30,3 +30,5 @@ The parks in the given state must be displayed on the page. Include at least:
 
 [x]The user must be able to make multiple searches and see only the results for the current search.
 
+link to github pages: https://pjc2010.github.io/NPS-API/
+
